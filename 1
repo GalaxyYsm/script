@@ -51,7 +51,8 @@ local function makeDraggable(obj)
 end
 
 -- OPEN BUTTON
-local openBtn = Instance.new("TextButton", gui)
+local openBtn = Instance.new("TextButton")
+openBtn.Parent = gui
 openBtn.Size = UDim2.new(0,140,0,45)
 openBtn.Position = UDim2.new(0,20,0,20)
 openBtn.Text = "Open Gui"
@@ -65,7 +66,8 @@ Instance.new("UICorner", openBtn)
 makeDraggable(openBtn)
 
 -- MAIN FRAME
-local frame = Instance.new("Frame", gui)
+local frame = Instance.new("Frame")
+frame.Parent = gui
 frame.Size = UDim2.new(0,380,0,340)
 frame.Position = UDim2.new(0.5,-190,0.5,-170)
 frame.BackgroundColor3 = Color3.fromRGB(15,15,15)
@@ -76,26 +78,30 @@ Instance.new("UICorner", frame).CornerRadius = UDim.new(0,14)
 
 makeDraggable(frame)
 
--- GALAXY BACKGROUND
-local galaxy = Instance.new("ImageLabel", frame)
+-- 🌌 GALAXY BACKGROUND
+local galaxy = Instance.new("ImageLabel")
+galaxy.Parent = frame
 galaxy.Size = UDim2.new(1,0,1,0)
 galaxy.Position = UDim2.new(0,0,0,0)
 galaxy.BackgroundTransparency = 1
-galaxy.Image = "rbxassetid://6071579801"
-galaxy.ImageTransparency = 0.35
-galaxy.ScaleType = Enum.ScaleType.Crop
+galaxy.Image = "rbxassetid://159964236"
+galaxy.ImageTransparency = 0
+galaxy.ImageColor3 = Color3.fromRGB(255,255,255)
+galaxy.ScaleType = Enum.ScaleType.Stretch
 galaxy.ZIndex = 0
 
 Instance.new("UICorner", galaxy).CornerRadius = UDim.new(0,14)
 
 -- GLOW
-local stroke = Instance.new("UIStroke", frame)
+local stroke = Instance.new("UIStroke")
+stroke.Parent = frame
 stroke.Color = Color3.fromRGB(0,255,170)
 stroke.Thickness = 2
 stroke.Transparency = 0.3
 
 -- TITLE
-local title = Instance.new("TextLabel", frame)
+local title = Instance.new("TextLabel")
+title.Parent = frame
 title.Text = "🤑 Steal A Brainrot ✅"
 title.Size = UDim2.new(1,0,0,40)
 title.Position = UDim2.new(0,0,0,10)
@@ -106,7 +112,8 @@ title.Font = Enum.Font.GothamBold
 title.ZIndex = 2
 
 -- CLOSE BUTTON
-local close = Instance.new("TextButton", frame)
+local close = Instance.new("TextButton")
+close.Parent = frame
 close.Size = UDim2.new(0,30,0,30)
 close.Position = UDim2.new(1,-40,0,10)
 close.Text = "X"
@@ -128,7 +135,8 @@ openBtn.MouseButton1Click:Connect(function()
 end)
 
 -- LABEL
-local label = Instance.new("TextLabel", frame)
+local label = Instance.new("TextLabel")
+label.Parent = frame
 label.Text = "Victim Name:"
 label.Size = UDim2.new(1,0,0,25)
 label.Position = UDim2.new(0,0,0.2,0)
@@ -139,7 +147,8 @@ label.Font = Enum.Font.GothamBold
 label.ZIndex = 2
 
 -- TEXTBOX
-local box = Instance.new("TextBox", frame)
+local box = Instance.new("TextBox")
+box.Parent = frame
 box.PlaceholderText = "Enter Name"
 box.Size = UDim2.new(0.7,0,0,45)
 box.Position = UDim2.new(0.15,0,0.28,0)
@@ -152,7 +161,8 @@ box.ZIndex = 2
 Instance.new("UICorner", box)
 
 -- AVATAR
-local avatar = Instance.new("ImageLabel", frame)
+local avatar = Instance.new("ImageLabel")
+avatar.Parent = frame
 avatar.Size = UDim2.new(0,90,0,90)
 avatar.Position = UDim2.new(0.5,-45,0.48,0)
 avatar.BackgroundColor3 = Color3.fromRGB(25,25,25)
@@ -179,13 +189,15 @@ end)
 
 -- TOGGLE FUNCTION
 local function createToggle(name, posY)
-	local holder = Instance.new("Frame", frame)
+	local holder = Instance.new("Frame")
+	holder.Parent = frame
 	holder.Size = UDim2.new(0.85,0,0,55)
 	holder.Position = UDim2.new(0.075,0,posY,0)
 	holder.BackgroundTransparency = 1
 	holder.ZIndex = 2
 
-	local label = Instance.new("TextLabel", holder)
+	local label = Instance.new("TextLabel")
+	label.Parent = holder
 	label.Text = name
 	label.Size = UDim2.new(0.6,0,1,0)
 	label.BackgroundTransparency = 1
@@ -193,14 +205,16 @@ local function createToggle(name, posY)
 	label.TextSize = 18
 	label.Font = Enum.Font.GothamBold
 
-	local toggle = Instance.new("Frame", holder)
+	local toggle = Instance.new("Frame")
+	toggle.Parent = holder
 	toggle.Size = UDim2.new(0,70,0,32)
 	toggle.Position = UDim2.new(1,-80,0.5,-16)
 	toggle.BackgroundColor3 = Color3.fromRGB(40,40,40)
 
 	Instance.new("UICorner", toggle).CornerRadius = UDim.new(1,0)
 
-	local circle = Instance.new("Frame", toggle)
+	local circle = Instance.new("Frame")
+	circle.Parent = toggle
 	circle.Size = UDim2.new(0,26,0,26)
 	circle.Position = UDim2.new(0,3,0.5,-13)
 	circle.BackgroundColor3 = Color3.new(1,1,1)
