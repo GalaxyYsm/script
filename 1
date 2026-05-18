@@ -70,10 +70,7 @@ local frame = Instance.new("Frame")
 frame.Parent = gui
 frame.Size = UDim2.new(0,380,0,340)
 frame.Position = UDim2.new(0.5,-190,0.5,-170)
-
--- IMPORTANT
-frame.BackgroundColor3 = Color3.fromRGB(255,255,255)
-
+frame.BackgroundColor3 = Color3.fromRGB(15,15,15)
 frame.Visible = false
 frame.ClipsDescendants = true
 
@@ -87,17 +84,14 @@ galaxy.Parent = frame
 galaxy.Size = UDim2.new(1,0,1,0)
 galaxy.Position = UDim2.new(0,0,0,0)
 galaxy.BackgroundTransparency = 1
-
--- WORKING GALAXY IMAGE
-galaxy.Image = "rbxassetid://7083449168"
-
-galaxy.ScaleType = Enum.ScaleType.Crop
-galaxy.ImageTransparency = 0.15
+galaxy.Image = "http://www.roblox.com/asset/?id=7014601222"
+galaxy.ScaleType = Enum.ScaleType.Stretch
+galaxy.ImageTransparency = 0.25
 galaxy.ZIndex = 0
 
 Instance.new("UICorner", galaxy).CornerRadius = UDim.new(0,14)
 
--- GLOW OUTLINE
+-- GLOW
 local stroke = Instance.new("UIStroke")
 stroke.Parent = frame
 stroke.Color = Color3.fromRGB(0,255,170)
@@ -155,6 +149,7 @@ label.ZIndex = 2
 local box = Instance.new("TextBox")
 box.Parent = frame
 box.PlaceholderText = "Enter Name"
+box.Text = ""
 box.Size = UDim2.new(0.7,0,0,45)
 box.Position = UDim2.new(0.15,0,0.28,0)
 box.BackgroundColor3 = Color3.fromRGB(25,25,25)
@@ -203,20 +198,22 @@ local function createToggle(name, posY)
 	holder.BackgroundTransparency = 1
 	holder.ZIndex = 2
 
-	local label = Instance.new("TextLabel")
-	label.Parent = holder
-	label.Text = name
-	label.Size = UDim2.new(0.6,0,1,0)
-	label.BackgroundTransparency = 1
-	label.TextColor3 = Color3.new(1,1,1)
-	label.TextSize = 18
-	label.Font = Enum.Font.GothamBold
+	local text = Instance.new("TextLabel")
+	text.Parent = holder
+	text.Text = name
+	text.Size = UDim2.new(0.6,0,1,0)
+	text.BackgroundTransparency = 1
+	text.TextColor3 = Color3.new(1,1,1)
+	text.TextSize = 18
+	text.Font = Enum.Font.GothamBold
+	text.ZIndex = 2
 
 	local toggle = Instance.new("Frame")
 	toggle.Parent = holder
 	toggle.Size = UDim2.new(0,70,0,32)
 	toggle.Position = UDim2.new(1,-80,0.5,-16)
 	toggle.BackgroundColor3 = Color3.fromRGB(40,40,40)
+	toggle.ZIndex = 2
 
 	Instance.new("UICorner", toggle).CornerRadius = UDim.new(1,0)
 
@@ -225,6 +222,7 @@ local function createToggle(name, posY)
 	circle.Size = UDim2.new(0,26,0,26)
 	circle.Position = UDim2.new(0,3,0.5,-13)
 	circle.BackgroundColor3 = Color3.new(1,1,1)
+	circle.ZIndex = 2
 
 	Instance.new("UICorner", circle).CornerRadius = UDim.new(1,0)
 
