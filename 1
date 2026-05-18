@@ -70,7 +70,10 @@ local frame = Instance.new("Frame")
 frame.Parent = gui
 frame.Size = UDim2.new(0,380,0,340)
 frame.Position = UDim2.new(0.5,-190,0.5,-170)
-frame.BackgroundColor3 = Color3.fromRGB(15,15,15)
+
+-- IMPORTANT
+frame.BackgroundColor3 = Color3.fromRGB(255,255,255)
+
 frame.Visible = false
 frame.ClipsDescendants = true
 
@@ -84,20 +87,22 @@ galaxy.Parent = frame
 galaxy.Size = UDim2.new(1,0,1,0)
 galaxy.Position = UDim2.new(0,0,0,0)
 galaxy.BackgroundTransparency = 1
-galaxy.Image = "rbxassetid://159964236"
-galaxy.ImageTransparency = 0
-galaxy.ImageColor3 = Color3.fromRGB(255,255,255)
-galaxy.ScaleType = Enum.ScaleType.Stretch
+
+-- WORKING GALAXY IMAGE
+galaxy.Image = "rbxassetid://7083449168"
+
+galaxy.ScaleType = Enum.ScaleType.Crop
+galaxy.ImageTransparency = 0.15
 galaxy.ZIndex = 0
 
 Instance.new("UICorner", galaxy).CornerRadius = UDim.new(0,14)
 
--- GLOW
+-- GLOW OUTLINE
 local stroke = Instance.new("UIStroke")
 stroke.Parent = frame
 stroke.Color = Color3.fromRGB(0,255,170)
 stroke.Thickness = 2
-stroke.Transparency = 0.3
+stroke.Transparency = 0.2
 
 -- TITLE
 local title = Instance.new("TextLabel")
@@ -152,7 +157,8 @@ box.Parent = frame
 box.PlaceholderText = "Enter Name"
 box.Size = UDim2.new(0.7,0,0,45)
 box.Position = UDim2.new(0.15,0,0.28,0)
-box.BackgroundColor3 = Color3.fromRGB(30,30,30)
+box.BackgroundColor3 = Color3.fromRGB(25,25,25)
+box.BackgroundTransparency = 0.2
 box.TextColor3 = Color3.new(1,1,1)
 box.TextSize = 16
 box.Font = Enum.Font.Gotham
@@ -166,6 +172,7 @@ avatar.Parent = frame
 avatar.Size = UDim2.new(0,90,0,90)
 avatar.Position = UDim2.new(0.5,-45,0.48,0)
 avatar.BackgroundColor3 = Color3.fromRGB(25,25,25)
+avatar.BackgroundTransparency = 0.2
 avatar.ZIndex = 2
 
 Instance.new("UICorner", avatar)
