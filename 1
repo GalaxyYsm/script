@@ -50,31 +50,18 @@ local function makeDraggable(obj)
 	end)
 end
 
--- OPEN BUTTON
-local openBtn = Instance.new("TextButton")
-openBtn.Parent = gui
-openBtn.Size = UDim2.new(0,140,0,45)
-openBtn.Position = UDim2.new(0,20,0,20)
-openBtn.Text = "Open Gui"
-openBtn.BackgroundColor3 = Color3.fromRGB(25,25,35)
-openBtn.TextColor3 = Color3.new(1,1,1)
-openBtn.TextSize = 16
-openBtn.Font = Enum.Font.GothamBold
-
-Instance.new("UICorner", openBtn)
-
-makeDraggable(openBtn)
-
 -- MAIN FRAME
 local frame = Instance.new("Frame")
 frame.Parent = gui
 frame.Size = UDim2.new(0,380,0,340)
 frame.Position = UDim2.new(0.5,-190,0.5,-170)
 
--- BETTER PURPLE GALAXY BASE
+-- PURPLE GALAXY
 frame.BackgroundColor3 = Color3.fromRGB(35,0,60)
 
-frame.Visible = false
+-- GUI SHOWS AUTOMATICALLY
+frame.Visible = true
+
 frame.ClipsDescendants = true
 
 Instance.new("UICorner", frame).CornerRadius = UDim.new(0,14)
@@ -87,14 +74,14 @@ gradient.Parent = frame
 
 gradient.Color = ColorSequence.new{
 	ColorSequenceKeypoint.new(0, Color3.fromRGB(140,0,255)),
-	ColorSequenceKeypoint.new(0.3, Color3.fromRGB(80,0,180)),
-	ColorSequenceKeypoint.new(0.6, Color3.fromRGB(35,0,90)),
+	ColorSequenceKeypoint.new(0.3, Color3.fromRGB(90,0,180)),
+	ColorSequenceKeypoint.new(0.6, Color3.fromRGB(45,0,110)),
 	ColorSequenceKeypoint.new(1, Color3.fromRGB(15,0,45))
 }
 
 gradient.Rotation = 35
 
--- DARK OVERLAY FOR CLEAN LOOK
+-- DARK OVERLAY
 local overlay = Instance.new("Frame")
 overlay.Parent = frame
 overlay.Size = UDim2.new(1,0,1,0)
@@ -104,7 +91,7 @@ overlay.ZIndex = 1
 
 Instance.new("UICorner", overlay)
 
--- ✨ SMALL STARS (NO BIG WHITE DOTS)
+-- STARS
 for i = 1,45 do
 	local star = Instance.new("Frame")
 	star.Parent = frame
@@ -121,7 +108,7 @@ for i = 1,45 do
 	)
 
 	star.BackgroundColor3 = Color3.fromRGB(220,220,255)
-	star.BackgroundTransparency = 0.3
+	star.BackgroundTransparency = 0.4
 	star.BorderSizePixel = 0
 	star.ZIndex = 2
 
@@ -136,6 +123,31 @@ stroke.Parent = frame
 stroke.Color = Color3.fromRGB(180,0,255)
 stroke.Thickness = 2
 stroke.Transparency = 0.15
+
+-- MINI OPEN BUTTON (DELTA STYLE)
+local miniBtn = Instance.new("TextButton")
+miniBtn.Parent = gui
+miniBtn.Size = UDim2.new(0,45,0,45)
+miniBtn.Position = UDim2.new(0,20,0.5,-22)
+
+miniBtn.Text = ""
+miniBtn.BackgroundColor3 = Color3.fromRGB(120,0,255)
+
+miniBtn.Visible = false
+
+miniBtn.ZIndex = 10
+
+Instance.new("UICorner", miniBtn).CornerRadius = UDim.new(1,0)
+
+local miniGradient = Instance.new("UIGradient")
+miniGradient.Parent = miniBtn
+
+miniGradient.Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(180,0,255)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(70,0,150))
+}
+
+makeDraggable(miniBtn)
 
 -- TITLE
 local title = Instance.new("TextLabel")
@@ -154,22 +166,23 @@ local close = Instance.new("TextButton")
 close.Parent = frame
 close.Size = UDim2.new(0,30,0,30)
 close.Position = UDim2.new(1,-40,0,10)
-close.Text = "X"
-close.BackgroundColor3 = Color3.fromRGB(45,20,60)
+close.Text = "-"
+close.BackgroundColor3 = Color3.fromRGB(50,20,70)
 close.TextColor3 = Color3.new(1,1,1)
 close.Font = Enum.Font.GothamBold
 close.ZIndex = 3
 
 Instance.new("UICorner", close)
 
+-- MINIMIZE
 close.MouseButton1Click:Connect(function()
 	frame.Visible = false
-	openBtn.Visible = true
+	miniBtn.Visible = true
 end)
 
-openBtn.MouseButton1Click:Connect(function()
+miniBtn.MouseButton1Click:Connect(function()
 	frame.Visible = true
-	openBtn.Visible = false
+	miniBtn.Visible = false
 end)
 
 -- LABEL
@@ -276,7 +289,7 @@ local function createToggle(name, posY)
 			}):Play()
 
 			TweenService:Create(toggle, TweenInfo.new(0.2), {
-				BackgroundColor3 = Color3.fromRGB(160,0,255)
+				BackgroundColor3 = Color3.fromRGB(180,0,255)
 			}):Play()
 		else
 			TweenService:Create(circle, TweenInfo.new(0.2), {
