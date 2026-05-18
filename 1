@@ -56,7 +56,7 @@ openBtn.Parent = gui
 openBtn.Size = UDim2.new(0,140,0,45)
 openBtn.Position = UDim2.new(0,20,0,20)
 openBtn.Text = "Open Gui"
-openBtn.BackgroundColor3 = Color3.fromRGB(20,20,20)
+openBtn.BackgroundColor3 = Color3.fromRGB(25,25,35)
 openBtn.TextColor3 = Color3.new(1,1,1)
 openBtn.TextSize = 16
 openBtn.Font = Enum.Font.GothamBold
@@ -71,8 +71,8 @@ frame.Parent = gui
 frame.Size = UDim2.new(0,380,0,340)
 frame.Position = UDim2.new(0.5,-190,0.5,-170)
 
--- 🌌 PURPLE GALAXY COLOR
-frame.BackgroundColor3 = Color3.fromRGB(60,0,90)
+-- BETTER PURPLE GALAXY BASE
+frame.BackgroundColor3 = Color3.fromRGB(35,0,60)
 
 frame.Visible = false
 frame.ClipsDescendants = true
@@ -86,24 +86,32 @@ local gradient = Instance.new("UIGradient")
 gradient.Parent = frame
 
 gradient.Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(120,0,255)),
-	ColorSequenceKeypoint.new(0.5, Color3.fromRGB(40,0,120)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(0,0,80))
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(140,0,255)),
+	ColorSequenceKeypoint.new(0.3, Color3.fromRGB(80,0,180)),
+	ColorSequenceKeypoint.new(0.6, Color3.fromRGB(35,0,90)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(15,0,45))
 }
 
-gradient.Rotation = 45
+gradient.Rotation = 35
 
--- ✨ STARS
-for i = 1,60 do
+-- DARK OVERLAY FOR CLEAN LOOK
+local overlay = Instance.new("Frame")
+overlay.Parent = frame
+overlay.Size = UDim2.new(1,0,1,0)
+overlay.BackgroundColor3 = Color3.fromRGB(0,0,0)
+overlay.BackgroundTransparency = 0.55
+overlay.ZIndex = 1
+
+Instance.new("UICorner", overlay)
+
+-- ✨ SMALL STARS (NO BIG WHITE DOTS)
+for i = 1,45 do
 	local star = Instance.new("Frame")
 	star.Parent = frame
 
-	star.Size = UDim2.new(
-		0,
-		math.random(1,3),
-		0,
-		math.random(1,3)
-	)
+	local size = math.random(1,2)
+
+	star.Size = UDim2.new(0,size,0,size)
 
 	star.Position = UDim2.new(
 		math.random(),
@@ -112,9 +120,10 @@ for i = 1,60 do
 		0
 	)
 
-	star.BackgroundColor3 = Color3.new(1,1,1)
+	star.BackgroundColor3 = Color3.fromRGB(220,220,255)
+	star.BackgroundTransparency = 0.3
 	star.BorderSizePixel = 0
-	star.ZIndex = 1
+	star.ZIndex = 2
 
 	local corner = Instance.new("UICorner")
 	corner.CornerRadius = UDim.new(1,0)
@@ -124,9 +133,9 @@ end
 -- GLOW
 local stroke = Instance.new("UIStroke")
 stroke.Parent = frame
-stroke.Color = Color3.fromRGB(0,255,170)
+stroke.Color = Color3.fromRGB(180,0,255)
 stroke.Thickness = 2
-stroke.Transparency = 0.2
+stroke.Transparency = 0.15
 
 -- TITLE
 local title = Instance.new("TextLabel")
@@ -146,7 +155,7 @@ close.Parent = frame
 close.Size = UDim2.new(0,30,0,30)
 close.Position = UDim2.new(1,-40,0,10)
 close.Text = "X"
-close.BackgroundColor3 = Color3.fromRGB(40,40,40)
+close.BackgroundColor3 = Color3.fromRGB(45,20,60)
 close.TextColor3 = Color3.new(1,1,1)
 close.Font = Enum.Font.GothamBold
 close.ZIndex = 3
@@ -180,10 +189,13 @@ local box = Instance.new("TextBox")
 box.Parent = frame
 box.PlaceholderText = "Enter Name"
 box.Text = ""
+
 box.Size = UDim2.new(0.7,0,0,45)
 box.Position = UDim2.new(0.15,0,0.27,0)
-box.BackgroundColor3 = Color3.fromRGB(25,25,35)
+
+box.BackgroundColor3 = Color3.fromRGB(40,20,55)
 box.TextColor3 = Color3.new(1,1,1)
+
 box.TextSize = 16
 box.Font = Enum.Font.Gotham
 box.ZIndex = 3
@@ -195,7 +207,8 @@ local avatar = Instance.new("ImageLabel")
 avatar.Parent = frame
 avatar.Size = UDim2.new(0,90,0,90)
 avatar.Position = UDim2.new(0.5,-45,0.44,0)
-avatar.BackgroundColor3 = Color3.fromRGB(25,25,35)
+
+avatar.BackgroundColor3 = Color3.fromRGB(40,20,55)
 avatar.ZIndex = 3
 
 Instance.new("UICorner", avatar)
@@ -240,7 +253,7 @@ local function createToggle(name, posY)
 	toggle.Parent = holder
 	toggle.Size = UDim2.new(0,70,0,32)
 	toggle.Position = UDim2.new(1,-80,0.5,-16)
-	toggle.BackgroundColor3 = Color3.fromRGB(40,40,40)
+	toggle.BackgroundColor3 = Color3.fromRGB(35,35,35)
 	toggle.ZIndex = 3
 
 	Instance.new("UICorner", toggle).CornerRadius = UDim.new(1,0)
@@ -263,7 +276,7 @@ local function createToggle(name, posY)
 			}):Play()
 
 			TweenService:Create(toggle, TweenInfo.new(0.2), {
-				BackgroundColor3 = Color3.fromRGB(0,255,120)
+				BackgroundColor3 = Color3.fromRGB(160,0,255)
 			}):Play()
 		else
 			TweenService:Create(circle, TweenInfo.new(0.2), {
@@ -271,7 +284,7 @@ local function createToggle(name, posY)
 			}):Play()
 
 			TweenService:Create(toggle, TweenInfo.new(0.2), {
-				BackgroundColor3 = Color3.fromRGB(40,40,40)
+				BackgroundColor3 = Color3.fromRGB(35,35,35)
 			}):Play()
 		end
 	end
