@@ -85,8 +85,8 @@ galaxy.Size = UDim2.new(1,0,1,0)
 galaxy.Position = UDim2.new(0,0,0,0)
 galaxy.BackgroundTransparency = 1
 
--- REAL GALAXY IMAGE
-galaxy.Image = "rbxassetid://496747958"
+-- WORKING GALAXY IMAGE FOR DELTA
+galaxy.Image = "rbxassetid://1316045217"
 
 galaxy.ScaleType = Enum.ScaleType.Stretch
 galaxy.ImageTransparency = 0
@@ -99,7 +99,7 @@ local overlay = Instance.new("Frame")
 overlay.Parent = frame
 overlay.Size = UDim2.new(1,0,1,0)
 overlay.BackgroundColor3 = Color3.fromRGB(0,0,0)
-overlay.BackgroundTransparency = 0.35
+overlay.BackgroundTransparency = 0.4
 overlay.ZIndex = 1
 
 Instance.new("UICorner", overlay).CornerRadius = UDim.new(0,14)
@@ -264,7 +264,6 @@ local function createToggle(name, posY)
 	toggle.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1
 		or input.UserInputType == Enum.UserInputType.Touch then
-
 			state = not state
 			update()
 		end
