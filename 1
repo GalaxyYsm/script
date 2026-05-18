@@ -70,7 +70,10 @@ local frame = Instance.new("Frame")
 frame.Parent = gui
 frame.Size = UDim2.new(0,380,0,340)
 frame.Position = UDim2.new(0.5,-190,0.5,-170)
-frame.BackgroundColor3 = Color3.fromRGB(15,15,15)
+
+-- 🌌 PURPLE GALAXY COLOR
+frame.BackgroundColor3 = Color3.fromRGB(60,0,90)
+
 frame.Visible = false
 frame.ClipsDescendants = true
 
@@ -78,18 +81,19 @@ Instance.new("UICorner", frame).CornerRadius = UDim.new(0,14)
 
 makeDraggable(frame)
 
--- 🌌 GALAXY BACKGROUND (NO IMAGE NEEDED)
-
+-- 🌌 GALAXY GRADIENT
 local gradient = Instance.new("UIGradient")
 gradient.Parent = frame
+
 gradient.Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(15,0,40)),
-	ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0,0,60)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(30,0,50))
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(120,0,255)),
+	ColorSequenceKeypoint.new(0.5, Color3.fromRGB(40,0,120)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(0,0,80))
 }
+
 gradient.Rotation = 45
 
--- STARS
+-- ✨ STARS
 for i = 1,60 do
 	local star = Instance.new("Frame")
 	star.Parent = frame
@@ -131,7 +135,7 @@ title.Text = "🤑 Steal A Brainrot ✅"
 title.Size = UDim2.new(1,0,0,40)
 title.Position = UDim2.new(0,0,0,10)
 title.BackgroundTransparency = 1
-title.TextColor3 = Color3.fromRGB(0,255,150)
+title.TextColor3 = Color3.fromRGB(255,255,255)
 title.TextSize = 22
 title.Font = Enum.Font.GothamBold
 title.ZIndex = 3
@@ -176,13 +180,10 @@ local box = Instance.new("TextBox")
 box.Parent = frame
 box.PlaceholderText = "Enter Name"
 box.Text = ""
-
 box.Size = UDim2.new(0.7,0,0,45)
 box.Position = UDim2.new(0.15,0,0.27,0)
-
-box.BackgroundColor3 = Color3.fromRGB(30,30,30)
+box.BackgroundColor3 = Color3.fromRGB(25,25,35)
 box.TextColor3 = Color3.new(1,1,1)
-
 box.TextSize = 16
 box.Font = Enum.Font.Gotham
 box.ZIndex = 3
@@ -194,10 +195,7 @@ local avatar = Instance.new("ImageLabel")
 avatar.Parent = frame
 avatar.Size = UDim2.new(0,90,0,90)
 avatar.Position = UDim2.new(0.5,-45,0.44,0)
-
-avatar.BackgroundColor3 = Color3.fromRGB(25,25,25)
-avatar.BackgroundTransparency = 0.1
-
+avatar.BackgroundColor3 = Color3.fromRGB(25,25,35)
 avatar.ZIndex = 3
 
 Instance.new("UICorner", avatar)
@@ -236,7 +234,6 @@ local function createToggle(name, posY)
 	text.TextColor3 = Color3.new(1,1,1)
 	text.TextSize = 18
 	text.Font = Enum.Font.GothamBold
-	text.TextXAlignment = Enum.TextXAlignment.Left
 	text.ZIndex = 3
 
 	local toggle = Instance.new("Frame")
@@ -266,7 +263,7 @@ local function createToggle(name, posY)
 			}):Play()
 
 			TweenService:Create(toggle, TweenInfo.new(0.2), {
-				BackgroundColor3 = Color3.fromRGB(0,200,120)
+				BackgroundColor3 = Color3.fromRGB(0,255,120)
 			}):Play()
 		else
 			TweenService:Create(circle, TweenInfo.new(0.2), {
