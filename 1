@@ -70,7 +70,7 @@ local frame = Instance.new("Frame")
 frame.Parent = gui
 frame.Size = UDim2.new(0,380,0,340)
 frame.Position = UDim2.new(0.5,-190,0.5,-170)
-frame.BackgroundColor3 = Color3.fromRGB(10,10,10)
+frame.BackgroundColor3 = Color3.fromRGB(15,15,15)
 frame.Visible = false
 frame.ClipsDescendants = true
 
@@ -78,31 +78,44 @@ Instance.new("UICorner", frame).CornerRadius = UDim.new(0,14)
 
 makeDraggable(frame)
 
--- 🌌 GALAXY BACKGROUND
-local galaxy = Instance.new("ImageLabel")
-galaxy.Parent = frame
-galaxy.Size = UDim2.new(1,0,1,0)
-galaxy.Position = UDim2.new(0,0,0,0)
-galaxy.BackgroundTransparency = 1
+-- 🌌 GALAXY BACKGROUND (NO IMAGE NEEDED)
 
--- WORKING GALAXY IMAGE FOR DELTA
-galaxy.Image = "rbxassetid://1316045217"
+local gradient = Instance.new("UIGradient")
+gradient.Parent = frame
+gradient.Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(15,0,40)),
+	ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0,0,60)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(30,0,50))
+}
+gradient.Rotation = 45
 
-galaxy.ScaleType = Enum.ScaleType.Stretch
-galaxy.ImageTransparency = 0
-galaxy.ZIndex = 0
+-- STARS
+for i = 1,60 do
+	local star = Instance.new("Frame")
+	star.Parent = frame
 
-Instance.new("UICorner", galaxy).CornerRadius = UDim.new(0,14)
+	star.Size = UDim2.new(
+		0,
+		math.random(1,3),
+		0,
+		math.random(1,3)
+	)
 
--- DARK OVERLAY
-local overlay = Instance.new("Frame")
-overlay.Parent = frame
-overlay.Size = UDim2.new(1,0,1,0)
-overlay.BackgroundColor3 = Color3.fromRGB(0,0,0)
-overlay.BackgroundTransparency = 0.4
-overlay.ZIndex = 1
+	star.Position = UDim2.new(
+		math.random(),
+		0,
+		math.random(),
+		0
+	)
 
-Instance.new("UICorner", overlay).CornerRadius = UDim.new(0,14)
+	star.BackgroundColor3 = Color3.new(1,1,1)
+	star.BorderSizePixel = 0
+	star.ZIndex = 1
+
+	local corner = Instance.new("UICorner")
+	corner.CornerRadius = UDim.new(1,0)
+	corner.Parent = star
+end
 
 -- GLOW
 local stroke = Instance.new("UIStroke")
@@ -163,10 +176,13 @@ local box = Instance.new("TextBox")
 box.Parent = frame
 box.PlaceholderText = "Enter Name"
 box.Text = ""
+
 box.Size = UDim2.new(0.7,0,0,45)
 box.Position = UDim2.new(0.15,0,0.27,0)
+
 box.BackgroundColor3 = Color3.fromRGB(30,30,30)
 box.TextColor3 = Color3.new(1,1,1)
+
 box.TextSize = 16
 box.Font = Enum.Font.Gotham
 box.ZIndex = 3
@@ -178,8 +194,10 @@ local avatar = Instance.new("ImageLabel")
 avatar.Parent = frame
 avatar.Size = UDim2.new(0,90,0,90)
 avatar.Position = UDim2.new(0.5,-45,0.44,0)
+
 avatar.BackgroundColor3 = Color3.fromRGB(25,25,25)
 avatar.BackgroundTransparency = 0.1
+
 avatar.ZIndex = 3
 
 Instance.new("UICorner", avatar)
@@ -264,6 +282,7 @@ local function createToggle(name, posY)
 	toggle.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1
 		or input.UserInputType == Enum.UserInputType.Touch then
+
 			state = not state
 			update()
 		end
