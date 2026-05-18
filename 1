@@ -70,10 +70,7 @@ local frame = Instance.new("Frame")
 frame.Parent = gui
 frame.Size = UDim2.new(0,380,0,340)
 frame.Position = UDim2.new(0.5,-190,0.5,-170)
-
--- FIXED BLACK BACKGROUND
-frame.BackgroundColor3 = Color3.fromRGB(10,10,20)
-
+frame.BackgroundColor3 = Color3.fromRGB(10,10,10)
 frame.Visible = false
 frame.ClipsDescendants = true
 
@@ -88,16 +85,16 @@ galaxy.Size = UDim2.new(1,0,1,0)
 galaxy.Position = UDim2.new(0,0,0,0)
 galaxy.BackgroundTransparency = 1
 
--- REAL WORKING GALAXY
-galaxy.Image = "rbxassetid://11839187613"
+-- REAL GALAXY IMAGE
+galaxy.Image = "rbxassetid://496747958"
 
 galaxy.ScaleType = Enum.ScaleType.Stretch
-galaxy.ImageTransparency = 0.45
+galaxy.ImageTransparency = 0
 galaxy.ZIndex = 0
 
 Instance.new("UICorner", galaxy).CornerRadius = UDim.new(0,14)
 
--- DARK OVERLAY (PREMIUM LOOK)
+-- DARK OVERLAY
 local overlay = Instance.new("Frame")
 overlay.Parent = frame
 overlay.Size = UDim2.new(1,0,1,0)
@@ -166,16 +163,12 @@ local box = Instance.new("TextBox")
 box.Parent = frame
 box.PlaceholderText = "Enter Name"
 box.Text = ""
-
 box.Size = UDim2.new(0.7,0,0,45)
 box.Position = UDim2.new(0.15,0,0.27,0)
-
 box.BackgroundColor3 = Color3.fromRGB(30,30,30)
 box.TextColor3 = Color3.new(1,1,1)
-
 box.TextSize = 16
 box.Font = Enum.Font.Gotham
-
 box.ZIndex = 3
 
 Instance.new("UICorner", box)
@@ -185,10 +178,8 @@ local avatar = Instance.new("ImageLabel")
 avatar.Parent = frame
 avatar.Size = UDim2.new(0,90,0,90)
 avatar.Position = UDim2.new(0.5,-45,0.44,0)
-
 avatar.BackgroundColor3 = Color3.fromRGB(25,25,25)
 avatar.BackgroundTransparency = 0.1
-
 avatar.ZIndex = 3
 
 Instance.new("UICorner", avatar)
@@ -219,7 +210,6 @@ local function createToggle(name, posY)
 	holder.BackgroundTransparency = 1
 	holder.ZIndex = 3
 
-	-- TEXT
 	local text = Instance.new("TextLabel")
 	text.Parent = holder
 	text.Text = name
@@ -231,7 +221,6 @@ local function createToggle(name, posY)
 	text.TextXAlignment = Enum.TextXAlignment.Left
 	text.ZIndex = 3
 
-	-- TOGGLE
 	local toggle = Instance.new("Frame")
 	toggle.Parent = holder
 	toggle.Size = UDim2.new(0,70,0,32)
@@ -241,7 +230,6 @@ local function createToggle(name, posY)
 
 	Instance.new("UICorner", toggle).CornerRadius = UDim.new(1,0)
 
-	-- CIRCLE
 	local circle = Instance.new("Frame")
 	circle.Parent = toggle
 	circle.Size = UDim2.new(0,26,0,26)
